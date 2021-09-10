@@ -1,38 +1,36 @@
 <template>
   <div>
-      <nav class="navbar navbar-expand navbar-dark bg-dark"> 
-          <div class="container">
-            <div class="nav navbar-nav">
-                <a class="nav-item nave-link active" href="#">Home</a>
-                <a class="nav-item nave-link" href="#">product</a>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="container">
+      <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home</a>
+        <a class="nav-item nav-link" href="#">Product</a>
+      </div>
+      <div>
+          <div class="dropdown open">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="triggerId"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >0 Cart</button>
+            <div @click="$event.stopPropagation()"> 
+              <mini-cart/>
             </div>
-            <div>
-                <div class="dropdown open">
-                    <button 
-                        class="btn btn-secondary dropdown-toggle" 
-                        type="button" 
-                        id="triggerId" 
-                        data-toggle="dropdown" 
-                        aria-haspopup="true" 
-                        aria-expanded="false"
-                    >Dropdown</button>
-                    <div class="dropdown-menu" aria-labelledby="triggerId">
-                        <button class="dropdown-item" href="#">Action</button>
-                        <button class="dropdown-item disabled" href="#">Disabled action</button>
-                    </div>
-                </div>
-            </div>
-            </div>
-      </nav>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 </template>
 
 <script>
+import MiniCart from './MiniCart.vue';
 export default {
-
-}
+  components: { MiniCart },};
 </script>
 
 <style>
-
 </style>
