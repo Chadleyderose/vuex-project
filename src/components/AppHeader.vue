@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="container">
       <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home</a>
+        <router-link to="/" class="nav-tem nav-link active">Home</router-link>
         <a class="nav-item nav-link" href="#">Product</a>
       </div>
       <div>
