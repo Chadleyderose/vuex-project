@@ -13,10 +13,10 @@
               type="button"
               id="triggerId"
               data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              aria-haspopup="false"
+              aria-expanded="true"
             >0 Cart</button>
-            <div @click="$event.stopPropagation()"> 
+            <div @click="event.stopPropagation()"> 
               <mini-cart/>
             </div>
           </div>
