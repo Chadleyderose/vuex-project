@@ -3,12 +3,12 @@
     class="dropdown-menu p-2"
     style="min-width: 320px; right:0; left:auto;"
     aria-labelledby="triggerId">
-    <div>
+    <div v-for="item in cart" :key="item.product.id">
       <div class="px-2 d-flex justify-content-between">
         <div>
-        <strong>Product title</strong>
+        <strong>{{item.product.title}}</strong>
         <br />
-        1 x $23
+        {{item.quantity}} x {{item.product.price}}
         </div>
         <div>
         <a href="" class="badge badge-secondary">remove</a>
@@ -25,7 +25,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+
+  computed:{
+    cart(){
+      return this.$store.state.cart
+    },
+    cartTotalPrice(){
+      return this.$store.getters.cartTotalPrice
+    }
+  }
+};
 </script>
 
 <style>

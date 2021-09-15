@@ -13,9 +13,9 @@
               type="button"
               id="triggerId"
               data-toggle="dropdown"
-              aria-haspopup="false"
-              aria-expanded="true"
-            >0 Cart</button>
+              aria-haspopup="true"
+              aria-expanded="false"
+            >{{ cartItemCount}} Cart</button>
             <div @click="event.stopPropagation()"> 
               <mini-cart/>
             </div>
@@ -29,7 +29,13 @@
 <script>
 import MiniCart from './MiniCart.vue';
 export default {
-  components: { MiniCart },};
+  components: { MiniCart },
+  computed: {
+    cartItemCount(){
+      return this.$store.getters.cartItemCount;
+    }
+  }
+  };
 </script>
 
 <style>
