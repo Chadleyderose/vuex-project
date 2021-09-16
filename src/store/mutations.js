@@ -20,3 +20,17 @@ export const ADD_TO_CART =(state, { product, quantity }) => {
         quantity
     })
 }
+
+export const SET_CART = ( state,  cartItems) => {
+    state.cart = cartItems;
+}
+
+export const REMOVE_PRODUCT_FROM_CART = (state,product) => {
+    state.cart = state.cart.filter(item => {
+        return item.product.id !== product.id;
+    })
+}
+
+export const CLEAR_CART_ITEMS = (state) => {
+    state.cart = [];
+}
