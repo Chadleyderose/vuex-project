@@ -15,13 +15,13 @@ export default {
   },
 
   computed: {
-    ...mapState(['products'])
+    ...mapState('products',['products'])
   },
   mounted() {
     this.getProducts();
 },
   methods:{
-    ...mapActions(['getProducts'])
+    ...mapActions("products",['getProducts'])
   }
 }
 </script>

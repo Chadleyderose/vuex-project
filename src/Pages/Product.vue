@@ -25,7 +25,7 @@ export default {
     },
     computed:{
 
-        ...mapState(['product'])
+        ...mapState("product",["product"])
 
     },
     mounted(){
@@ -33,8 +33,8 @@ export default {
     },
 
     methods:{
-
-        ...mapActions(['getProduct', 'addProductToCart']),
+        ...mapActions('product',[ 'getProduct']),
+        ...mapActions('cart',[ 'addProductToCart']),
 
         addToCart(){
             this.addProductToCart({

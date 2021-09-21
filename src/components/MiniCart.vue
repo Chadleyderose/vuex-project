@@ -29,9 +29,9 @@ import {mapState, mapGetters, mapActions} from "vuex";
 export default {
 
   computed:{
-    ...mapState(["cart"]),
+    ...mapState('cart',['cart']),
 
-    ...mapGetters(["cartTotalPrice"])
+    ...mapGetters("cart",["cartTotalPrice"])
 
   },
 
@@ -40,7 +40,11 @@ export default {
   },
 
   methods: {
-    ...mapActions(['removeProductFromCart', 'clearCartItems', 'getCartItems']),
+    ...mapActions("cart",[
+      'removeProductFromCart', 
+      'clearCartItems', 
+      'getCartItems'
+      ]),
 
   }
 };
