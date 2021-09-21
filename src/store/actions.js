@@ -1,4 +1,3 @@
-import axios from "axios";
 import Product from "../apis/Products";
 import Cart from "../apis/Cart";
 
@@ -32,11 +31,11 @@ export const getCartItems = ({ commit }) => {
 export const removeProductFromCart = ({commit}, product) =>{
     commit('REMOVE_PRODUCT_FROM_CART', product);
 
-    axios.delete(`http://localhost:3000/cart/${product.id}`);
+    Cart.delete(product.id);
 }
 
 export const clearCartItems = ({ commit }) => {
     commit ('CLEAR_CART_ITEMS');
 
-    axios.delete('http://localhost:3000/cart');
+    Cart.deleteAll();
 }
