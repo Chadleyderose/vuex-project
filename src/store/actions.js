@@ -1,15 +1,15 @@
 import axios from "axios";
+import Product from "../apis/Products";
+import Cart from "../apis/Cart";
 
 export const getProducts = ({ commit }) => {
-    axios.get('http://localhost:3000/products')
-    .then(response => {
+    Product.all().then(response => {
         commit('SET_PRODUCTS', response.data);
     })
 }
 
 export const getProduct = ({ commit }, productId) =>{
-    axios.get(`http://localhost:3000/products/${productId}`)
-    .then(response => {
+    Product.show(productId).then(response => {
         commit('SET_PRODUCT', response.data)
         console.log(response.data)
     })
@@ -18,15 +18,13 @@ export const getProduct = ({ commit }, productId) =>{
 export const addProductToCart = ({commit}, {product, quantity}) =>{
     commit('ADD_TO_CART', {product, quantity});
 
-    axios.post(' http://localhost:3000/cart', {
-        product_id: product.id,
-        quantity
-    })
+    Cart.store({product_id: product.id,
+                quantity
+    });
 }
 
 export const getCartItems = ({ commit }) => {
-    axios.get( 'http://localhost:3000/cart')
-    .then(response => {
+    Cart.all().then(response => {
         commit('SET_CART', response.data)
     })
 }

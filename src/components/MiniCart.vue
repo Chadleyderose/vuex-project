@@ -19,35 +19,29 @@
 
     <div class="d-flex justify-content-between">
       <span>Total:{{cartTotalPrice}}</span>
-      <a href="#" @click.prevent="clearCarrtItems()">Clear Cart</a>
+      <a href="#" @click.prevent="clearCartItems()">Clear Cart</a>
     </div>
   </div>
 </template>
 
 <script>
+import {mapState, mapGetters, mapActions} from "vuex";
 export default {
 
   computed:{
-    cart(){
-      return this.$store.state.cart
-    },
-    cartTotalPrice(){
-      return this.$store.getters.cartTotalPrice
-    }
+    ...mapState(["cart"]),
+
+    ...mapGetters(["cartTotalPrice"])
+
   },
 
   mounted(){
-    this.$store.dispatch('getCartItems');
+    this.getCartItems();
   },
 
   methods: {
-    removeProductFromCart(product){
-      this.$store.dispatch('removeProductFromCart', product)
-    },
+    ...mapActions(['removeProductFromCart', 'clearCartItems', 'getCartItems']),
 
-    clearCartItems(){
-      this.$store.dispatch("clearCartItems");
-    }
   }
 };
 </script>

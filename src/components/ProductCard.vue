@@ -6,7 +6,7 @@
         <h4 class="card-title">
           <router-link :to="{name: 'product', params: {id: product.id }}">{{ product.title }}</router-link>
         </h4>
-        <strong>{{ product.price }}</strong>
+        <strong>R{{ product.price }}</strong>
         <p class="card-text">
         <div class="px-4 pb-3">
           <button class="btn btn-secondary" @click="addToCart()">Add to Cart</button>
@@ -17,11 +17,15 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
   props: ["product"],
   methods:{
+
+    ...mapActions(['addProductToCart']),
     addToCart(){
-      this.$store.dispatch('addProductToCart', {
+      this.addProductToCart({
         product: this.product,
         quantity: 1
       })
